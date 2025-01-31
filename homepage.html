@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI CALCULATOR</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap");
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: url("https://wallpapers.com/images/hd/dark-grey-background-phpf8ys7h4fgijgt.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: "Nunito", sans-serif;
+        }
+
+        nav {
+            background-color: #050506;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            color: #ffffff;
+        }
+
+        nav .title {
+            font-size: 22px;
+            font-weight: 800;
+            color: #f3f4f9;
+            margin-left: 20px;
+            text-transform: uppercase;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 10px;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #0044ff;
+        }
+
+        .container {
+            position: absolute;
+            left: 50%;
+            top: 15%;
+            transform: translate(-50%, 0%);
+        }
+
+        .box {
+            min-width: 400px;
+            background: #fafafa;
+            border-radius: 38px;
+            text-align: center;
+            position: relative;
+            margin-bottom: 50px;
+            background-color: lightgray;
+            box-shadow: inset;
+            border-style: groove;
+            border-color: #050506;
+        }
+
+        .box::before {
+            content: "";
+            position: absolute;
+            height: 50%;
+            width: 110%;
+            left: -5%;
+            top: -5%;
+            background-color: rgba(30, 32, 35, 0.963);
+            box-shadow: 0px 0px 166px -31px rgba(0, 0, 0, 0.15);
+            border-radius: 60px;
+            z-index: -1;
+        }
+
+        h1 {
+            font-weight: bold;
+            font-size: 36px;
+            padding: 30px 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-style: italic;
+        }
+
+        .content {
+            padding: 0 40px;
+        }
+
+        .input {
+            background: #fff;
+            box-shadow: 0px 0px 95px -30px rgba(0, 0, 0, 0.15);
+            border-radius: 28px;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+
+        .input label {
+            display: block;
+            font-size: 18px;
+            font-weight: 600;
+            color: #000;
+            background-color: white;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .input input[type="number"] {
+            outline: none;
+            border: none;
+            border-bottom: 1px solid #4f7df9;
+            width: 60%;
+            text-align: center;
+            font-size: 28px;
+            font-family: "Nunito", sans-serif;
+        }
+
+        .gender-input {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px 0;
+        }
+
+        .gender-input label {
+            font-size: 18px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .gender-input input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        button#calculate {
+            font-family: "Nunito", sans-serif;
+            color: #fffcfc;
+            background: #050506;
+            font-size: 16px;
+            border-radius: 12px;
+            padding: 12px 0;
+            width: 100%;
+            outline: none;
+            border: none;
+            transition: background 0.2s ease;
+        }
+
+        button#calculate:hover {
+            background: #000209;
+        }
+
+        .result {
+            padding: 30px 20px;
+        }
+
+        .result p {
+            font-weight: 600;
+            font-size: 22px;
+            color: #000;
+            margin-bottom: 15px;
+        }
+
+        .result #result {
+            font-size: 36px;
+            font-weight: 900;
+            color: #4f7df9;
+            background-color: #eaeaea;
+            display: inline-block;
+            padding: 7px 20px;
+            border-radius: 55px;
+            margin-bottom: 25px;
+        }
+
+        #comment {
+            color: #4f7df9;
+            font-weight: 800;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="title">Body Mass Index Calculator</div>
+        <div>
+            <a href="homepage.html">Home</a>
+            <a href="knowmore.html">Know More</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="box">
+            <h1>BMI CALCULATOR</h1>
+            <div class="content">
+                <div class="input">
+                    <label for="height">Height(cm)</label>
+                    <input type="number" id="height">
+                </div>
+                <div class="input">
+                    <label for="weight">Weight(kg)</label>
+                    <input type="number" id="weight">
+                </div>
+                <div class="input">
+                    <label>Gender</label>
+                    <div class="gender-input">
+                        <label><input type="radio" name="gender" value="male"> Male</label>
+                        <label><input type="radio" name="gender" value="female"> Female</label>
+                    </div>
+                </div>
+                <button id="calculate" onclick="calculateBMI()">Calculate BMI</button>
+            </div>
+            <div class="result">
+                <p>Your BMI is</p>
+                <div id="result">00.00</div>
+                <p id="comment"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateBMI() {
+            const height = parseFloat(document.getElementById("height").value);
+            const weight = parseFloat(document.getElementById("weight").value);
+            const result = document.getElementById("result");
+            const comment = document.getElementById("comment");
+
+            if (!height || !weight) {
+                result.innerText = "00.00";
+                comment.innerText = "Please enter valid height and weight values.";
+                return;
+            }
+
+            const bmi = weight / ((height / 100) ** 2);
+            result.innerText = bmi.toFixed(2);
+
+            if (bmi < 18.5) {
+                comment.innerText = "Underweight";
+            } else if (bmi >= 18.5 && bmi < 24.9) {
+                comment.innerText = "Normal weight";
+            } else if (bmi >= 25 && bmi < 29.9) {
+                comment.innerText = "Overweight";
+            } else {
+                comment.innerText = "Obesity";
+            }
+        }
+    </script>
+</body>
+</html>
