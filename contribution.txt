@@ -1,0 +1,2 @@
+Name: Abhinav Gupta
+Idea: Add a dark mode option to improve accessibility.
